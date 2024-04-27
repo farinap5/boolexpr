@@ -98,11 +98,11 @@ func (l *Lex)GetToken() {
 				l.Token.Type = 0
 				return
 			}
-		
+
 			if l.isOperator() {
 				return
 			}
-		
+
 			if l.isGroup() {
 				return
 			}
