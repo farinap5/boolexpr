@@ -75,10 +75,25 @@ func Blank(char byte) bool {
 	}
 }
 
+func isSpec(char byte) bool {
+	switch char {
+	case '&':
+		return true
+	case '|':
+		return true
+	case '(':
+		return true
+	case ')':
+		return true
+	default:
+		return false
+	}
+}
+
 func (l *Lex)isString() bool {
 	var aux []byte
 	ret := false
-	for (int(l.Index) < len(l.Code)) && !Blank(l.Code[l.Index]) {
+	for (int(l.Index) < len(l.Code)) && !Blank(l.Code[l.Index]) && !isSpec(l.Code[l.Index]) {
 		if !ret {ret = true}
 		aux = append(aux, l.Code[l.Index])
 		l.Index++
