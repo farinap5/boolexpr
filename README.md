@@ -11,7 +11,7 @@ The BNF grammar for evaluating boolen expressions looks like the following patte
     | <data>
 
 <data> ::=
-	[a-z]+
+    [a-z]+
 ```
 
 It must generate the following sentences.

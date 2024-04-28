@@ -1,11 +1,11 @@
-package main
+package boolsearch
 
 const (
 	INV = 0 // Invalid data or end of code
 	AND = 1
 	OR  = 2
-	OPN	= 3
-	CLS	= 4
+	OPN = 3
+	CLS = 4
 	STR = 5 // A string
 )
 
@@ -18,6 +18,10 @@ type Lex struct {
 	}
 }
 
+
+/*
+	Init will create a new lexer for a different sentence
+*/
 func Init(Data string) *Lex {
 	lex := new(Lex)
 	lex.Code = Data
@@ -40,6 +44,9 @@ func (l *Lex)isOperator() bool {
 	}
 }
 
+/*
+	isGroup Validates parenthesis nesting.
+*/
 func (l *Lex)isGroup() bool {
 	switch l.Code[l.Index] {
 	case '(':
