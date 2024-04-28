@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	b "boolsearch"
+	b "boolexpr"
 )
 
 func main() {
-	l := b.Init("a")
+	l := b.Init("a | b")
 
 	data := "Qualquer dado"
 	c, err := l.Eval(data)

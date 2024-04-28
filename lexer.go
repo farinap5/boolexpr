@@ -1,4 +1,4 @@
-package boolsearch
+package boolexpr
 
 const (
 	INV = 0 // Invalid data or end of code

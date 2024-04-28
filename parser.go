@@ -1,4 +1,4 @@
-package boolsearch
+package boolexpr
 
 import (
 	"errors"
