@@ -8,7 +8,7 @@ import (
 func (l *Lex) Eval(data string) (bool, error) {
 	l.GetToken()
 	if l.Token.Type == INV {
-		return false, errors.New("")
+		return false, errors.New("invalid operation")
 	}
 	
 	r := new(bool)
@@ -51,7 +51,10 @@ func eval_grp(l *Lex, r *bool, data *string) (string, error) {
 
 func str(l *Lex) (string, error) {
 	if l.Token.Type == STR {
-		return l.Token.Data, nil
+		aux := l.Token.Data
+		l.GetToken()
+		return aux, nil
+		
 	}
 	return "", errors.New("not a valid token")
 }

@@ -91,7 +91,7 @@ func (l *Lex)isString() bool {
 
 func (l *Lex)GetToken() {
 	/* 
-	starts nulled. If has data, ending blank returns as the last data saw.
+	starts nulled cuz if has data, ending blank returns as the last data saw.
 	*/
 	l.Token.Type = 0
 
