@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	l := b.Init("(o&q)|a")
+	l := b.Init("(((b&x|x)&x|x&q&q|x)&((x|(o&(o&x)))&q)&(q&b)&(((o&q)&a|l)))")
 
 	data := "Qualquer dado"
 	c, err := l.Eval(data)
