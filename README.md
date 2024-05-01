@@ -77,3 +77,20 @@ https://www.inf.ufpr.br/lesoliveira/download/c-completo-total.pdf
 <num> ::= [0-9]+ | [0-9]+ "." [0-9]+ | <name>
 <n> ::= ("\n" | " ")*
 ```
+
+
+```
+<exp> ::= <sttm>
+<sttm> ::= <name> <n> "{" <n> <sttm> <n> "}"
+    | <name> <n> "=" <n> <val> <n> ";"
+    | <sttm> <n> <sttm>
+
+<val> ::= <num> | <bool> | <string> | <list>
+<list> ::= "[" <n> <val> <n> ("," <n> <val>)* <n> "]"
+ 
+<bool> ::= "true" | "false"
+<num> ::= [0-9]+ | [0-9]+ "." [0-9]+
+<string> ::= "\"" <name> (<n> <name>)* "\""
+<name> ::= [a-z] ([a-z] | [A-Z] | [0-9])*
+<n> ::= ("\n" | " ")*
+```

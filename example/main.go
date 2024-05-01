@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	l := b.Init("a | b")
+	l := b.Init("(o&q)|a")
 
 	data := "Qualquer dado"
 	c, err := l.Eval(data)
