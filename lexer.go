@@ -1,26 +1,25 @@
 package boolexpr
 
 const (
-	INV = 0 // Invalid data or end of code
-	AND = 1
-	OR  = 2
-	OPN = 3
-	CLS = 4
-	STR = 5 // A string
+	INV = iota // Invalid data or end of code
+	AND
+	OR
+	OPN
+	CLS
+	STR // A string
 )
 
 type Lex struct {
-	Code 	string
-	Index 	uint
+	Code  string
+	Index uint
 	Token struct {
 		Type uint8
 		Data string
 	}
 }
 
-
 /*
-	Init will create a new lexer for a different sentence
+Init will create a new lexer for a different sentence
 */
 func Init(Data string) *Lex {
 	lex := new(Lex)
@@ -29,7 +28,7 @@ func Init(Data string) *Lex {
 	return lex
 }
 
-func (l *Lex)isOperator() bool {
+func (l *Lex) isOperator() bool {
 	switch l.Code[l.Index] {
 	case '&':
 		l.Index++
@@ -45,9 +44,9 @@ func (l *Lex)isOperator() bool {
 }
 
 /*
-	isGroup Validates parenthesis nesting.
+isGroup Validates parenthesis nesting.
 */
-func (l *Lex)isGroup() bool {
+func (l *Lex) isGroup() bool {
 	switch l.Code[l.Index] {
 	case '(':
 		l.Index++
@@ -90,11 +89,13 @@ func isSpec(char byte) bool {
 	}
 }
 
-func (l *Lex)isString() bool {
+func (l *Lex) isString() bool {
 	var aux []byte
 	ret := false
 	for (int(l.Index) < len(l.Code)) && !Blank(l.Code[l.Index]) && !isSpec(l.Code[l.Index]) {
-		if !ret {ret = true}
+		if !ret {
+			ret = true
+		}
 		aux = append(aux, l.Code[l.Index])
 		l.Index++
 	}
@@ -103,10 +104,9 @@ func (l *Lex)isString() bool {
 	return ret
 }
 
-
-func (l *Lex)GetToken() {
-	/* 
-	starts nulled cuz if has data, ending blank returns as the last data saw.
+func (l *Lex) GetToken() {
+	/*
+		starts nulled cuz if has data, ending blank returns as the last data saw.
 	*/
 	l.Token.Type = 0
 
@@ -135,5 +135,6 @@ func (l *Lex)GetToken() {
 		} else {
 			l.Index++
 		}
-	}	
+	}
 }
+
